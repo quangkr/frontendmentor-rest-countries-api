@@ -62,12 +62,12 @@ export type Country = {
 };
 
 export type DataContextType = {
-  data: Array<Country> | null;
-  setData: (Data: Array<Country> | null) => void;
+  data: Array<Country>;
+  setData: (Data: Array<Country>) => void;
 };
 
 export const DataContext = createContext<DataContextType>({
-  data: null,
+  data: [],
   setData: (data) => console.warn("No data provider"),
 });
 
@@ -78,7 +78,7 @@ type Props = {
 };
 
 export const DataContextProvider = ({ children }: Props) => {
-  const [data, setData] = useState<Array<Country> | null>(mockData);
+  const [data, setData] = useState<Array<Country>>(mockData);
 
   return (
     <DataContext.Provider value={{ data, setData }}>
