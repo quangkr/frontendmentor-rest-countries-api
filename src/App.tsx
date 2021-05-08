@@ -1,11 +1,16 @@
 import { DataContextProvider } from "context/DataContext";
 import { ThemeContextProvider } from "context/ThemeContext";
 
+import MainLayout from "layouts/MainLayout";
+import Home from "views/Home";
+
 const App = () => {
   return (
     <DataContextProvider>
       <ThemeContextProvider>
-        <div id="app">React app</div>
+        <MainLayout>
+          <Home />
+        </MainLayout>
       </ThemeContextProvider>
     </DataContextProvider>
   );
