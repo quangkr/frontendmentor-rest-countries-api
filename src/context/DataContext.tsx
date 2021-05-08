@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, FC } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 import mockData from "./mockData";
 
 type Language = {
@@ -71,7 +71,13 @@ export const DataContext = createContext<DataContextType>({
   setData: (data) => console.warn("No data provider"),
 });
 
-export const DataContextProvider: FC = ({ children }) => {
+export const useData = () => useContext(DataContext);
+
+type Props = {
+  children: ReactNode;
+};
+
+export const DataContextProvider = ({ children }: Props) => {
   const [data, setData] = useState<Array<Country> | null>(mockData);
 
   return (
@@ -80,5 +86,3 @@ export const DataContextProvider: FC = ({ children }) => {
     </DataContext.Provider>
   );
 };
-
-export const useData = () => useContext(DataContext);

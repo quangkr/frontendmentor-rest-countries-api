@@ -1,9 +1,7 @@
-import React from "react";
-
 import { DataContextProvider } from "context/DataContext";
 import { ThemeContextProvider } from "context/ThemeContext";
 
-const App: React.FC = () => {
+const App = () => {
   return (
     <DataContextProvider>
       <ThemeContextProvider>

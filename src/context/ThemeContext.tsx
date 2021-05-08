@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, FC } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
 export enum Theme {
   Dark = "Dark",
@@ -17,7 +17,11 @@ export const ThemeContext = createContext<ThemeContextType>({
 
 export const useTheme = () => useContext(ThemeContext);
 
-export const ThemeContextProvider: FC = ({ children }) => {
+type Props = {
+  children: ReactNode;
+};
+
+export const ThemeContextProvider = ({ children }: Props) => {
   const [theme, setTheme] = useState(Theme.Light);
 
   return (
