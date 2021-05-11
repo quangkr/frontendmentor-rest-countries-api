@@ -1,7 +1,12 @@
 import { Icon } from "@iconify/react";
 import search from "@iconify/icons-ic/outline-search";
 
-export default function SearchBar() {
+type Props = {
+  value: string;
+  setValue: (value: string) => void;
+};
+
+export default function SearchBar({ value, setValue }: Props) {
   return (
     <div className="mx-6 my-8 w-full relative">
       <Icon
@@ -13,6 +18,8 @@ export default function SearchBar() {
         name="search"
         placeholder="Search for a country..."
         className="w-full p-4 pl-16 flex flex-row flex-nowrap bg-white rounded overflow-hidden shadow-md focus:outline-none focus:ring ring-gray-500"
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
     </div>
   );
