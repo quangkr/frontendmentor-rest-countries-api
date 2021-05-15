@@ -11,6 +11,7 @@ type CountryInfoProps = {
 
 type Props = {
   country: Country;
+  className?: string;
 };
 
 const CountryName = ({ name }: CountryNameProps) => (
@@ -25,13 +26,18 @@ const CountryInfo = ({ label, value }: CountryInfoProps) => (
   </p>
 );
 
-export default function CountryCard({ country }: Props) {
+export default function CountryCard({ country, className = "" }: Props) {
   const formattedPopulation = new Intl.NumberFormat("en-US").format(
     country.population
   );
 
   return (
-    <div className="w-60 h-80 m-8 bg-white rounded overflow-hidden shadow-md">
+    <div
+      className={`w-60 h-80
+      rounded overflow-hidden
+      shadow-md bg-white
+      ${className}`}
+    >
       <img
         src={country.flag}
         alt={`${country.name}'s flag'`}

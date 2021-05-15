@@ -7,7 +7,7 @@ import CountryCard from "components/CountryCard";
 
 export default function Home() {
   const { data: countriesList } = useData();
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
 
   const regionList = useMemo(
@@ -32,23 +32,25 @@ export default function Home() {
 
   const filteredCountriesList = useMemo(
     () =>
-      searchQuery
+      searchInput
         ? countriesByRegion.filter((country) =>
-            country.name.toLowerCase().includes(searchQuery.toLowerCase())
+            country.name.toLowerCase().includes(searchInput.toLowerCase())
           )
         : countriesByRegion,
-    [countriesByRegion, searchQuery]
+    [countriesByRegion, searchInput]
   );
 
   return (
-    <div className="w-full h-full flex flex-row flex-wrap justify-between bg-gray-50">
-      <SearchBar value={searchQuery} setValue={setSearchQuery} />
-      <FilterSelector
-        options={regionList}
-        value={regionFilter}
-        setValue={setRegionFilter}
-      />
-      <div className="w-full flex flex-row flex-wrap justify-center">
+    <div className="w-full h-full flex flex-col justify-center relative bg-gray-50">
+      <div className="w-full flex flex-col justify-center md:flex-row md:justify-between md:items-center md:px-6 lg:px-12">
+        <SearchBar value={searchInput} setValue={setSearchInput} />
+        <FilterSelector
+          options={regionList}
+          value={regionFilter}
+          setValue={setRegionFilter}
+        />
+      </div>
+      <div className="grid grid-cols-fill-60 gap-8 mx-8 my-12 md:gap-16 md:mx-12 lg:gap-20 lg:mx-16 justify-center">
         {filteredCountriesList.map((country: Country) => (
           <CountryCard key={country.alpha3Code} country={country} />
         ))}

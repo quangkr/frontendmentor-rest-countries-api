@@ -28,7 +28,7 @@ export default function FilterSelector({ options, value, setValue }: Props) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="ml-6 w-60 relative">
+    <div className="mx-6 w-60 relative">
       <div
         className="w-full p-4 pl-8
                     flex flex-row justify-between items-center

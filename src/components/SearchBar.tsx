@@ -8,7 +8,7 @@ type Props = {
 
 export default function SearchBar({ value, setValue }: Props) {
   return (
-    <div className="mx-6 my-8 w-full relative">
+    <div className="mx-6 my-8 md:w-1/2 relative">
       <Icon
         icon={search}
         className="h-8 w-auto mx-4 my-auto bg-transparent text-gray-500 absolute top-1/2 left-0 transform -translate-y-1/2"

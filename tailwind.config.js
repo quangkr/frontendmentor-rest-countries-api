@@ -33,6 +33,9 @@ module.exports = {
       fontFamily: {
         sans: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
+      gridTemplateColumns: {
+        "fill-60": "repeat(auto-fill, min(100%, 15rem))",
+      },
     },
   },
   variants: {
