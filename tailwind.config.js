@@ -33,6 +33,11 @@ module.exports = {
       fontFamily: {
         sans: ["Nunito", ...defaultTheme.fontFamily.sans],
       },
+      boxShadow: {
+        bold: `0 0px 3px 2px rgba(0, 0, 0, 0.12),
+              0 1px 3px 0 rgba(0, 0, 0, 0.1),
+              0 1px 2px 0 rgba(0, 0, 0, 0.06)`,
+      },
       gridTemplateColumns: {
         "fill-60": "repeat(auto-fill, min(100%, 15rem))",
       },
