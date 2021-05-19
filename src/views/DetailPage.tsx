@@ -60,7 +60,7 @@ export default function DetailPage() {
   );
 
   return (
-    <div className="max-w-xl mx-auto px-8 py-12 bg-gray-50">
+    <div className="max-w-xl mx-auto px-8 py-12">
       <Link to="/">
         <Button>Back</Button>
       </Link>

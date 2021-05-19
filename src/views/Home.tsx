@@ -41,7 +41,7 @@ export default function Home() {
   );
 
   return (
-    <div className="w-full h-full flex flex-col justify-center relative bg-gray-50">
+    <div className="w-full h-full flex flex-col justify-center relative">
       <div className="w-full flex flex-col justify-center md:flex-row md:justify-between md:items-center md:px-6 lg:px-12">
         <SearchBar value={searchInput} setValue={setSearchInput} />
         <FilterSelector
