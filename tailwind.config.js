@@ -31,7 +31,7 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        sans: ["Nunito", ...defaultTheme.fontFamily.sans],
+        sans: ['"Nunito Sans"', ...defaultTheme.fontFamily.sans],
       },
       boxShadow: {
         bold: `0 0px 3px 2px rgba(0, 0, 0, 0.12),
