@@ -14,7 +14,7 @@ export default function Button({ children, className = "" }: Props) {
                   bg-white
                   rounded-sm shadow-bold border-2 border-transparent
                   transition-transform transform
-                  hover:pointer
+                  hover:cursor-pointer
                   active:scale-95 active:shadow
                   focus:outline-none focus:border-gray-50
                   ${className}`}
