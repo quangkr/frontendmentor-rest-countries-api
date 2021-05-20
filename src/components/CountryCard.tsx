@@ -36,7 +36,8 @@ export default function CountryCard({ country, className = "" }: Props) {
     <div
       className={`w-60 h-80
       rounded overflow-hidden
-      shadow-md bg-white
+      bg-white dark:bg-blue-800
+      shadow-md
       ${className}`}
     >
       <Link to={`/detail/${country.alpha3Code}`}>

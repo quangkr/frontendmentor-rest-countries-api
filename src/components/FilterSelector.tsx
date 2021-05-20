@@ -31,9 +31,10 @@ export default function FilterSelector({ options, value, setValue }: Props) {
     <div className="mx-6 w-60 relative">
       <div
         className="w-full p-4 pl-8
-                    flex flex-row justify-between items-center
-                    rounded overflow-hidden shadow-md
-                    bg-white capitalize cursor-pointer"
+                  flex flex-row justify-between items-center
+                  rounded overflow-hidden shadow-md
+                  bg-white dark:bg-blue-800
+                  capitalize cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
         <span>{value}</span>
@@ -41,7 +42,7 @@ export default function FilterSelector({ options, value, setValue }: Props) {
           <InlineIcon
             icon={close}
             className={`${value === "" ? "hidden" : "inline"}
-                      text-xl bg-transparent text-gray-500`}
+                      text-xl bg-transparent opacity-50`}
             onClick={() => setValue("")}
           />
           <InlineIcon icon={arrowDown} className="text-xl bg-transparent" />
@@ -50,7 +51,9 @@ export default function FilterSelector({ options, value, setValue }: Props) {
       <ul
         className={`${isOpen ? "flex" : "hidden"}
                     flex-col rounded overflow-hidden shadow-md
-                    w-full p-2 mt-2 bg-white absolute`}
+                    w-full p-2 mt-2
+                    bg-white dark:bg-blue-800
+                    absolute`}
       >
         {options.map((option) => (
           <StyledOption

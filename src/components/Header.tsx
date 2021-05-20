@@ -14,14 +14,18 @@ export default function Header() {
   }
 
   return (
-    <header className="w-full h-20 flex flex-col justify-center items-center bg-white shadow-md">
+    <header
+      className="w-full h-20 flex flex-col justify-center items-center
+                bg-white dark:bg-blue-800
+                text-blue-950 dark:text-white
+                shadow-md"
+    >
       <div className="w-full px-8 flex justify-between items-end">
         <h1 className="font-extrabold text-lg">Where in the world?</h1>
         <button
-          className={`flex items-center font-semibold
-                    bg-transparent border-none
-                    focus:outline-none
-                    select-none cursor-pointer`}
+          className="flex items-center font-semibold
+                    bg-transparent border-none focus:outline-none
+                    select-none cursor-pointer"
           onClick={() => toggleTheme()}
         >
           <span className="mr-2">Dark Mode</span>
