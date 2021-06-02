@@ -10,12 +10,10 @@ type Props = {
 export default function MainLayout({ children }: Props) {
   const { theme } = useTheme();
   return (
-    <div
-      className={`w-full min-h-screen
-                ${theme === Theme.Dark ? "dark" : ""}`}
-    >
+    <div className={`${theme === Theme.Dark ? "dark" : ""}`}>
       <div
-        className="bg-gray-50 dark:bg-blue-900
+        className="w-full min-h-screen
+                  bg-gray-50 dark:bg-blue-900
                   text-blue-950 dark:text-white"
       >
         <Header />
