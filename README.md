@@ -15,8 +15,8 @@ Users should be able to:
 
 ## Progress
 
-- [ ] Basic markup and styling
+- [x] Basic markup and styling
 - [ ] REST API handling
-- [ ] Client-side filtering
-- [ ] Detail page
-- [ ] Dark mode
+- [x] Client-side filtering
+- [x] Detail page
+- [x] Dark mode
