@@ -1,5 +1,10 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-import mockData from "./mockData";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  ReactNode,
+} from "react";
 
 type Language = {
   iso639_1: string | null;
@@ -8,24 +13,12 @@ type Language = {
   nativeName: string | null;
 };
 
-type Currency = {
-  code: string | null;
-  name: string | null;
-  symbol: string | null;
-};
+type Currency = Record<"code" | "name" | "symbol", string | null>;
 
-type Translation = {
-  de: string | null;
-  es: string | null;
-  fr: string | null;
-  ja: string | null;
-  it: string | null;
-  br: string | null;
-  pt: string | null;
-  nl: string | null;
-  hr: string | null;
-  fa: string | null;
-};
+type Translation = Record<
+  "de" | "es" | "fr" | "ja" | "it" | "br" | "pt" | "nl" | "hr" | "fa",
+  string | null
+>;
 
 type RegionalBlocs = {
   acronym: string;
@@ -61,14 +54,20 @@ export type Country = {
   cioc: string | null;
 };
 
+type CountriesList = { [p: string]: Country };
+
 export type DataContextType = {
-  data: Array<Country>;
-  setData: (Data: Array<Country>) => void;
+  data: CountriesList;
+  loading: boolean;
+  fetchData: () => void;
 };
 
 export const DataContext = createContext<DataContextType>({
-  data: [],
-  setData: (data) => console.warn("No data provider"),
+  data: {},
+  loading: false,
+  fetchData: () => {
+    console.log("No data provider");
+  },
 });
 
 export const useData = () => useContext(DataContext);
@@ -78,10 +77,28 @@ type Props = {
 };
 
 export const DataContextProvider = ({ children }: Props) => {
-  const [data, setData] = useState<Array<Country>>(mockData);
+  const [data, setData] = useState<CountriesList>({});
+  const [loading, setLoading] = useState(false);
+
+  async function fetchData() {
+    setLoading(true);
+    const response = await fetch("https://restcountries.eu/rest/v2/all");
+    const json: Array<Country> = await response.json();
+    const result = json.reduce(
+      (accumulator, value) => ({ ...accumulator, [value.alpha3Code]: value }),
+      {}
+    );
+
+    setData(result);
+    setLoading(false);
+  }
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataContext.Provider value={{ data, loading, fetchData }}>
       {children}
     </DataContext.Provider>
   );
