@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { HashRouter, Switch, Route } from "react-router-dom";
 import { DataContextProvider } from "context/DataContext";
 import { ThemeContextProvider } from "context/ThemeContext";
 
@@ -8,7 +8,7 @@ import DetailPage from "views/DetailPage";
 
 const App = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <DataContextProvider>
         <ThemeContextProvider>
           <MainLayout>
@@ -19,7 +19,7 @@ const App = () => {
           </MainLayout>
         </ThemeContextProvider>
       </DataContextProvider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
