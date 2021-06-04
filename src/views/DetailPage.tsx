@@ -31,10 +31,10 @@ function arrayToString(array: Array<string | null>) {
 }
 
 export default function DetailPage() {
-  const { data: countriesList } = useData();
+  const { countries } = useData();
   const { id } = useParams<RouteParams>();
 
-  const country = useMemo(() => countriesList[id], [countriesList, id]);
+  const country = useMemo(() => countries[id], [countries, id]);
 
   const borderCountries: Array<Country> = useMemo(
     () =>
@@ -42,12 +42,12 @@ export default function DetailPage() {
         ? country.borders.reduce(
             (accumulator: Array<Country>, value) => [
               ...accumulator,
-              countriesList[value],
+              countries[value],
             ],
             []
           )
         : [],
-    [countriesList, country]
+    [countries, country]
   );
 
   const formattedPopulation: string = useMemo(

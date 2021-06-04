@@ -6,11 +6,11 @@ import FilterSelector from "components/FilterSelector";
 import CountryCard from "components/CountryCard";
 
 export default function Home() {
-  const { data } = useData();
+  const { countries } = useData();
   const [searchInput, setSearchInput] = useState("");
   const [regionFilter, setRegionFilter] = useState("");
 
-  const countriesList = useMemo(() => Object.values(data), [data]);
+  const countriesList = useMemo(() => Object.values(countries), [countries]);
 
   const regionList = useMemo(
     () =>

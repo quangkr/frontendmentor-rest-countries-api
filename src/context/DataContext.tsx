@@ -57,13 +57,13 @@ export type Country = {
 type CountriesList = { [p: string]: Country };
 
 export type DataContextType = {
-  data: CountriesList;
+  countries: CountriesList;
   loading: boolean;
   fetchData: () => void;
 };
 
 export const DataContext = createContext<DataContextType>({
-  data: {},
+  countries: {},
   loading: false,
   fetchData: () => {
     console.log("No data provider");
@@ -77,8 +77,20 @@ type Props = {
 };
 
 export const DataContextProvider = ({ children }: Props) => {
-  const [data, setData] = useState<CountriesList>({});
+  const [countries, setCountries] = useState<CountriesList>({});
   const [loading, setLoading] = useState(false);
+
+  function loadLocalStorage() {
+    setLoading(true);
+    const result = localStorage.getItem("countries");
+
+    if (!result) {
+      throw new TypeError("countries should be of CountriesList type");
+    }
+
+    setCountries(JSON.parse(result));
+    setLoading(false);
+  }
 
   async function fetchData() {
     setLoading(true);
@@ -89,16 +101,21 @@ export const DataContextProvider = ({ children }: Props) => {
       {}
     );
 
-    setData(result);
+    setCountries(result);
+    localStorage.setItem("countries", JSON.stringify(result));
     setLoading(false);
   }
 
   useEffect(() => {
-    fetchData();
+    try {
+      loadLocalStorage();
+    } catch (e) {
+      fetchData();
+    }
   }, []);
 
   return (
-    <DataContext.Provider value={{ data, loading, fetchData }}>
+    <DataContext.Provider value={{ countries, loading, fetchData }}>
       {children}
     </DataContext.Provider>
   );
