@@ -61,22 +61,35 @@ export default function DetailPage() {
         </Link>
         {country ? (
           <>
-            <div className="flex flex-col lg:flex-row">
-              <div className="lg:w-1/2 my-12">
+            <div
+              className="
+                flex flex-col lg:flex-row items-center lg:justify-between
+                my-16 lg:my-20"
+            >
+              <div className="lg:w-1/2">
                 <img src={country.flag} alt={`${country.name}'s flag'`} />
               </div>
-              <div className="flex flex-col lg:flex-row lg:w-1/2 flex-wrap">
-                <h1 className="lg:w-full mb-6 font-extrabold text-2xl">
+              <div
+                className="
+                  flex flex-col lg:flex-row lg:flex-wrap
+                  lg:w-1/2 lg:ml-24"
+              >
+                <h1
+                  className="
+                    lg:w-full
+                    my-10 lg:my-6
+                    font-extrabold text-2xl lg:text-4xl"
+                >
                   {country.name}
                 </h1>
-                <div className="flex flex-col lg:w-1/2">
+                <div className="flex flex-col lg:w-5/12">
                   <InfoBlock label="Native Name" value={country.nativeName} />
                   <InfoBlock label="Population" value={formattedPopulation} />
                   <InfoBlock label="Region" value={country.region} />
                   <InfoBlock label="Sub Region" value={country.subregion} />
                   <InfoBlock label="Capital" value={country.capital} />
                 </div>
-                <div className="flex flex-col lg:w-1/2 mt-6">
+                <div className="flex flex-col lg:w-5/12 mt-6 lg:mt-0 lg:ml-6">
                   <InfoBlock
                     label="Top Level Domain"
                     value={arrayToString(country.topLevelDomain)}
@@ -105,7 +118,9 @@ export default function DetailPage() {
                         key={country.alpha3Code}
                         className="m-2"
                       >
-                        <Button>{country.name}</Button>
+                        <Button className="lg:text-sm lg:px-4">
+                          {country.name}
+                        </Button>
                       </Link>
                     ))}
                   </span>
