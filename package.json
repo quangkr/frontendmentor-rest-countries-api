@@ -2,7 +2,7 @@
   "name": "frontendmentor-rest-countries-api",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://quangkr.github.io/frontendmentor-rest-countries-api",
+  "homepage": "https://rclist.dangminhquang.me",
   "scripts": {
     "start": "craco start",
     "build": "craco build",
